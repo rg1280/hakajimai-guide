@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://hakajimai.taccweb.com/sitemap.xml
