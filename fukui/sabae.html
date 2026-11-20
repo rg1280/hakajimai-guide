@@ -23,6 +23,10 @@
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--fg);font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI",Meiryo,sans-serif;line-height:1.8;font-size:16px}
 a{color:var(--accent);overflow-wrap:anywhere}a:hover{color:var(--accent-dk)}
+.skip{position:absolute;left:-9999px;top:0;background:#fff;color:var(--accent);padding:8px 14px;z-index:10;font-weight:700}.skip:focus{left:12px;top:8px}
+a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.filt{display:flex;align-items:center;gap:8px;min-height:44px;font-weight:700;margin:0 0 8px;cursor:pointer}.filt input{width:20px;height:20px}
+.report{margin-top:16px;font-size:14px;color:var(--sub)}
 h1,h2,h3,.maru{font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN",sans-serif}
 .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
 .prbar{background:#E7E3DA;color:var(--sub2);font-size:13px;text-align:center;padding:6px 16px}
@@ -130,10 +134,11 @@ th:first-child,td:first-child{white-space:nowrap}.optable th{width:38%}.formbox 
 .stats.free .v{font-size:22px}.call .tel{font-size:22px}.chip{white-space:normal}}
 </style></head>
 <body>
+<a class="skip" href="#main">本文へ移動</a>
 <div class="prbar">このサイトは、紹介料を受け取る広告（PR）を掲載することがあります。</div>
 <header class="wrap site-head"><a class="logo maru" href="/"><svg width="38" height="38" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E5470"/><path d="M14 31 V16 Q14 11 20 11 Q26 11 26 16 V31" fill="none" stroke="#F6F4EF" stroke-width="2.6" stroke-linejoin="round"/><path d="M10 31 H30" stroke="#F6F4EF" stroke-width="2.6" stroke-linecap="round"/><rect x="18.5" y="16" width="3" height="8" rx="1" fill="#E2B866"/></svg><span>墓じまい・改葬ガイド</span></a>
 <nav class="site-nav" aria-label="サイト内の案内"><a href="/#pref">都道府県から探す</a><a href="/#flow">墓じまいの流れ</a><a href="/guide/kaisou-law.html">法律の決まり</a><a href="/guide/">読みもの</a><a href="/about.html">このサイトについて</a><a href="/contact.html">お問い合わせ</a></nav></header>
-<main class="wrap">
+<main class="wrap" id="main">
 <p class="crumb"><a href="/">トップ</a> ＞ <a href="index.html">福井県</a> ＞ 鯖江市</p>
 <section class="hero"><div class="hero-text">
 <h1>鯖江市の墓じまい（改葬許可）の手続きと窓口</h1>
@@ -162,6 +167,7 @@ th:first-child,td:first-child{white-space:nowrap}.optable th{width:38%}.formbox 
 </ul></div></div>
 <p class="src">オンラインでの申請は、確認日の時点で公式ページに案内がありませんでした。</p>
 <div class="office"><div><div class="k">出典（公式ページ）・確認日 2026-11-18</div></div><div class="srcs"><a class="btn" href="https://www.city.sabae.fukui.jp/kurashi_tetsuduki/todokede/shomeisho/123.html" rel="nofollow">鯖江市 お墓の改葬許可</a></div></div>
+<p class="report">鯖江市の内容の誤りや、公式ページの変更に気づいたときは、<a href="/contact.html">お問い合わせ</a>からお知らせください。確かめ直して訂正します。</p>
 </section>
 <section class="card" style="margin-top:32px"><div class="card-head"><svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="22" fill="#EFEAE0"/><path d="M16 32 V17 Q16 12 22 12 Q28 12 28 17 V32" fill="#fff" stroke="#4A4B50" stroke-width="2"/><path d="M12 32 H32" stroke="#4A4B50" stroke-width="2.4" stroke-linecap="round"/></svg><h2>公営墓地を返すとき：総山墓園（市営）</h2></div><ul>
 <li>総山墓園の様式のページに「墓地返還届（様式第12号）」がPDF・Word形式で掲載されています（返還の手順の説明はありません）。</li>

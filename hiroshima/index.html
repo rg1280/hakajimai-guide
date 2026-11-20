@@ -23,6 +23,10 @@
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--fg);font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI",Meiryo,sans-serif;line-height:1.8;font-size:16px}
 a{color:var(--accent);overflow-wrap:anywhere}a:hover{color:var(--accent-dk)}
+.skip{position:absolute;left:-9999px;top:0;background:#fff;color:var(--accent);padding:8px 14px;z-index:10;font-weight:700}.skip:focus{left:12px;top:8px}
+a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.filt{display:flex;align-items:center;gap:8px;min-height:44px;font-weight:700;margin:0 0 8px;cursor:pointer}.filt input{width:20px;height:20px}
+.report{margin-top:16px;font-size:14px;color:var(--sub)}
 h1,h2,h3,.maru{font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN",sans-serif}
 .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
 .prbar{background:#E7E3DA;color:var(--sub2);font-size:13px;text-align:center;padding:6px 16px}
@@ -130,10 +134,11 @@ th:first-child,td:first-child{white-space:nowrap}.optable th{width:38%}.formbox 
 .stats.free .v{font-size:22px}.call .tel{font-size:22px}.chip{white-space:normal}}
 </style></head>
 <body>
+<a class="skip" href="#main">本文へ移動</a>
 <div class="prbar">このサイトは、紹介料を受け取る広告（PR）を掲載することがあります。</div>
 <header class="wrap site-head"><a class="logo maru" href="/"><svg width="38" height="38" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E5470"/><path d="M14 31 V16 Q14 11 20 11 Q26 11 26 16 V31" fill="none" stroke="#F6F4EF" stroke-width="2.6" stroke-linejoin="round"/><path d="M10 31 H30" stroke="#F6F4EF" stroke-width="2.6" stroke-linecap="round"/><rect x="18.5" y="16" width="3" height="8" rx="1" fill="#E2B866"/></svg><span>墓じまい・改葬ガイド</span></a>
 <nav class="site-nav" aria-label="サイト内の案内"><a href="/#pref">都道府県から探す</a><a href="/#flow">墓じまいの流れ</a><a href="/guide/kaisou-law.html">法律の決まり</a><a href="/guide/">読みもの</a><a href="/about.html">このサイトについて</a><a href="/contact.html">お問い合わせ</a></nav></header>
-<main class="wrap">
+<main class="wrap" id="main">
 <p class="crumb"><a href="/">トップ</a> ＞ 広島県</p>
 <section class="hero"><div class="hero-text">
 <h1>広島県の墓じまい（改葬許可）の手続き 市町村別一覧</h1>
@@ -164,7 +169,8 @@ var s=document.createElement('span');s.textContent=e[1];a.appendChild(s);li.appe
 function load(){if(ld)return;ld=true;fetch('/muni-index.json').then(function(x){return x.json()}).then(function(j){ix=j;show();});}
 q.addEventListener('focus',load);q.addEventListener('input',function(){load();show();});})();</script>
 <dl class="legend"><dt><span class="chip ok">あり</span></dt><dd>改葬の手続きを説明した公式ページがある</dd><dt><span class="chip ok">様式のみ</span></dt><dd>申請書の様式だけが公開されている</dd><dt><span class="chip no">一部のみ</span></dt><dd>業務の一覧などに「改葬」の記載が少しだけある</dd><dt><span class="chip no">見つからず</span></dt><dd>公式サイトで改葬の案内が見つからなかった（制度が無いという意味ではありません）</dd><dt>手数料「記載なし」</dt><dd>公式ページに手数料が書かれていない</dd></dl>
-<div class="tbox"><table><tr><th>市町村</th><th>改葬の案内</th><th>手数料</th><th>申請書の<br>ウェブ取得</th></tr>
+<label class="filt"><input type="checkbox" id="onlyhas"> 改葬の案内か申請書の様式がある市町村だけを表示する</label>
+<div class="tbox"><table id="mtab"><tr><th>市町村</th><th>改葬の案内</th><th>手数料</th><th>申請書の<br>ウェブ取得</th></tr>
 <tr><td><a class="mn" href="hiroshima-shi.html">広島市</a></td><td><span class="chip ok">あり</span></td><td>記載なし</td><td>あり</td></tr>
 <tr><td><a class="mn" href="kure.html">呉市</a></td><td><span class="chip ok">あり</span></td><td>記載なし</td><td>あり</td></tr>
 <tr><td><a class="mn" href="takehara.html">竹原市</a></td><td><span class="chip ok">あり</span></td><td>記載なし</td><td>あり</td></tr>
@@ -178,17 +184,18 @@ q.addEventListener('focus',load);q.addEventListener('input',function(){load();sh
 <tr><td><a class="mn" href="higashihiroshima.html">東広島市</a></td><td><span class="chip ok">あり</span></td><td>記載なし</td><td>あり</td></tr>
 <tr><td><a class="mn" href="hatsukaichi.html">廿日市市</a></td><td><span class="chip ok">あり</span></td><td>記載なし</td><td>あり</td></tr>
 <tr><td><a class="mn" href="akitakata.html">安芸高田市</a></td><td><span class="chip ok">あり</span></td><td>記載なし</td><td>あり</td></tr>
-<tr id="etajima"><td><b>江田島市</b></td><td colspan="3"><span class="chip no">見つからず</span><br>確認日の時点で市の公式サイトがメンテナンス中で、改葬の案内ページを開けず、確かめられませんでした。死亡届や火葬許可を扱う窓口に電話でお確かめください。<br><span class="src">公式サイトにあること：江田島市の公式ホームページは、確認日の時点でセキュリティ対策の緊急メンテナンスのため閲覧が停止され、簡易サイトだけが表示されていました。改葬の案内ページは開けませんでした。</span><br><span class="src">公式サイトにあること：簡易サイトの「主な業務・お問い合わせ先一覧」では、市民課（0823-43-1634）の業務に「火葬許可」、生活環境課（0823-43-1637）の業務に「墓地管理」があります（改葬の担当かどうかは明記されていません）。</span><br>市役所の代表連絡先（総務課）：<a href="tel:0823431111">0823-43-1111</a><br><span class="src">確認日 2026-11-18・<a href="https://www.city.etajima.hiroshima.jp/" rel="nofollow">番号の出典（公式サイト）</a>・<a href="https://www.city.etajima.hiroshima.jp/toiawaseichiran.pdf" rel="nofollow">調べた公式ページ</a></span></td></tr>
+<tr id="etajima" class="nohas"><td><b>江田島市</b></td><td colspan="3"><span class="chip no">見つからず</span><br>確認日の時点で市の公式サイトがメンテナンス中で、改葬の案内ページを開けず、確かめられませんでした。死亡届や火葬許可を扱う窓口に電話でお確かめください。<br><span class="src">公式サイトにあること：江田島市の公式ホームページは、確認日の時点でセキュリティ対策の緊急メンテナンスのため閲覧が停止され、簡易サイトだけが表示されていました。改葬の案内ページは開けませんでした。</span><br><span class="src">公式サイトにあること：簡易サイトの「主な業務・お問い合わせ先一覧」では、市民課（0823-43-1634）の業務に「火葬許可」、生活環境課（0823-43-1637）の業務に「墓地管理」があります（改葬の担当かどうかは明記されていません）。</span><br>市役所の代表連絡先（総務課）：<a href="tel:0823431111">0823-43-1111</a><br><span class="src">確認日 2026-11-18・<a href="https://www.city.etajima.hiroshima.jp/" rel="nofollow">番号の出典（公式サイト）</a>・<a href="https://www.city.etajima.hiroshima.jp/toiawaseichiran.pdf" rel="nofollow">調べた公式ページ</a></span></td></tr>
 <tr><td><a class="mn" href="fuchu-cho.html">府中町</a></td><td><span class="chip ok">あり</span></td><td>記載なし</td><td>あり</td></tr>
 <tr><td><a class="mn" href="kaita.html">海田町</a></td><td><span class="chip ok">あり</span></td><td>記載なし</td><td>あり</td></tr>
-<tr id="kumano"><td><b>熊野町</b></td><td colspan="3"><span class="chip no">見つからず</span><br>公式サイトに改葬の案内が見当たりません。死亡届や火葬許可を扱う窓口に電話でお確かめください。<br><span class="src">公式サイトにあること：死亡届のページでは、税務住民課 戸籍住民グループが死亡届を受理し、死体火葬許可証を発行すると案内されています（改葬の担当かどうかは明記されていません）。</span><br>町役場の電話（総合案内）：<a href="tel:0828205600">082-820-5600</a><br><span class="src">確認日 2026-11-19・<a href="https://www.town.kumano.lg.jp/index.html" rel="nofollow">番号の出典（公式サイト）</a>・<a href="https://www.town.kumano.lg.jp/8/10/1/3788.html" rel="nofollow">調べた公式ページ</a></span></td></tr>
+<tr id="kumano" class="nohas"><td><b>熊野町</b></td><td colspan="3"><span class="chip no">見つからず</span><br>公式サイトに改葬の案内が見当たりません。死亡届や火葬許可を扱う窓口に電話でお確かめください。<br><span class="src">公式サイトにあること：死亡届のページでは、税務住民課 戸籍住民グループが死亡届を受理し、死体火葬許可証を発行すると案内されています（改葬の担当かどうかは明記されていません）。</span><br>町役場の電話（総合案内）：<a href="tel:0828205600">082-820-5600</a><br><span class="src">確認日 2026-11-19・<a href="https://www.town.kumano.lg.jp/index.html" rel="nofollow">番号の出典（公式サイト）</a>・<a href="https://www.town.kumano.lg.jp/8/10/1/3788.html" rel="nofollow">調べた公式ページ</a></span></td></tr>
 <tr><td><a class="mn" href="saka.html">坂町</a></td><td><span class="chip ok">あり</span></td><td>記載なし</td><td>あり</td></tr>
 <tr><td><a class="mn" href="akiota.html">安芸太田町</a></td><td><span class="chip ok">あり</span></td><td>記載なし</td><td>あり</td></tr>
 <tr><td><a class="mn" href="kitahiroshima.html">北広島町</a></td><td><span class="chip ok">あり</span></td><td>記載なし</td><td>あり</td></tr>
-<tr id="osakikamijima"><td><b>大崎上島町</b></td><td colspan="3"><span class="chip no">見つからず</span><br>公式サイトに改葬の案内が見当たりません。死亡届や火葬許可を扱う窓口に電話でお確かめください。<br><span class="src">公式サイトにあること：死亡の届出の際の「死体火葬許可申請」は、本庁および各支所の住民課窓口で受け付けています（改葬の担当かどうかは明記されていません）。</span><br>町役場の電話（本庁代表）：<a href="tel:0846653111">0846-65-3111</a><br><span class="src">確認日 2026-11-19・<a href="https://www.town.osakikamijima.hiroshima.jp/mokuteki/3/4671.html" rel="nofollow">番号の出典（公式サイト）</a></span></td></tr>
+<tr id="osakikamijima" class="nohas"><td><b>大崎上島町</b></td><td colspan="3"><span class="chip no">見つからず</span><br>公式サイトに改葬の案内が見当たりません。死亡届や火葬許可を扱う窓口に電話でお確かめください。<br><span class="src">公式サイトにあること：死亡の届出の際の「死体火葬許可申請」は、本庁および各支所の住民課窓口で受け付けています（改葬の担当かどうかは明記されていません）。</span><br>町役場の電話（本庁代表）：<a href="tel:0846653111">0846-65-3111</a><br><span class="src">確認日 2026-11-19・<a href="https://www.town.osakikamijima.hiroshima.jp/mokuteki/3/4671.html" rel="nofollow">番号の出典（公式サイト）</a></span></td></tr>
 <tr><td><a class="mn" href="sera.html">世羅町</a></td><td><span class="chip ok">あり</span></td><td>無料</td><td>あり</td></tr>
 <tr><td><a class="mn" href="jinsekikogen.html">神石高原町</a></td><td><span class="chip ok">あり</span></td><td>記載なし</td><td>あり</td></tr>
 </table></div>
+<script>(function(){var c=document.getElementById('onlyhas'),t=document.getElementById('mtab');if(!c||!t)return;c.addEventListener('change',function(){t.querySelectorAll('tr.nohas').forEach(function(r){r.hidden=c.checked;});});})();</script>
 <h2>広島県の案内</h2><div class='card'><p>改葬（遺骨を他のお墓や納骨堂に移すこと）は、保健所ではなく、お墓のある市町役場が窓口です。府中町・海田町・熊野町・坂町・安芸太田町の墓地の設置・廃止（墓じまいでの墓地廃止許可）は、この広島支所が相談を受け付けています。</p><p>広島県 西部厚生環境事務所・保健所 広島支所 生活衛生課（<a href="tel:0825135533">082-513-5533</a>）</p><p class="src">公式ページ（確認日 2026-11-18）：<a href="https://www.pref.hiroshima.lg.jp/soshiki/169/bochi.html" rel="nofollow">https://www.pref.hiroshima.lg.jp/soshiki/169/bochi.html</a></p></div>
 <p class="src">確認日：2026-11-18〜2026-11-19</p>
 <section class="guides"><h2>墓じまいの手続きをくわしく知る</h2><ul><li><a href="/guide/kotoba.html">墓じまいの言葉の意味：改葬・埋葬・埋蔵・収蔵・墳墓・納骨堂</a></li><li><a href="/guide/hiyou.html">墓じまいの費用の内訳：役所の手数料と証明書、それ以外にかかるもの</a></li><li><a href="/guide/shinseisho.html">改葬許可申請書の書き方：記入欄ごとの説明</a></li><li><a href="/guide/shoumeisho.html">埋葬（収蔵）証明書・受入証明書とは：誰が出すか、もらえないとき</a></li><li><a href="/guide/ridan.html">離檀の進め方：法律で決まっていることと、決まっていないこと</a></li><li><a href="/guide/kaisou-law.html">改葬許可の法律の決まり</a></li></ul></section>

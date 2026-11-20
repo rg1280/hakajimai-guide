@@ -23,6 +23,10 @@
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--fg);font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI",Meiryo,sans-serif;line-height:1.8;font-size:16px}
 a{color:var(--accent);overflow-wrap:anywhere}a:hover{color:var(--accent-dk)}
+.skip{position:absolute;left:-9999px;top:0;background:#fff;color:var(--accent);padding:8px 14px;z-index:10;font-weight:700}.skip:focus{left:12px;top:8px}
+a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.filt{display:flex;align-items:center;gap:8px;min-height:44px;font-weight:700;margin:0 0 8px;cursor:pointer}.filt input{width:20px;height:20px}
+.report{margin-top:16px;font-size:14px;color:var(--sub)}
 h1,h2,h3,.maru{font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN",sans-serif}
 .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
 .prbar{background:#E7E3DA;color:var(--sub2);font-size:13px;text-align:center;padding:6px 16px}
@@ -130,10 +134,11 @@ th:first-child,td:first-child{white-space:nowrap}.optable th{width:38%}.formbox 
 .stats.free .v{font-size:22px}.call .tel{font-size:22px}.chip{white-space:normal}}
 </style></head>
 <body>
+<a class="skip" href="#main">本文へ移動</a>
 <div class="prbar">このサイトは、紹介料を受け取る広告（PR）を掲載することがあります。</div>
 <header class="wrap site-head"><a class="logo maru" href="/"><svg width="38" height="38" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E5470"/><path d="M14 31 V16 Q14 11 20 11 Q26 11 26 16 V31" fill="none" stroke="#F6F4EF" stroke-width="2.6" stroke-linejoin="round"/><path d="M10 31 H30" stroke="#F6F4EF" stroke-width="2.6" stroke-linecap="round"/><rect x="18.5" y="16" width="3" height="8" rx="1" fill="#E2B866"/></svg><span>墓じまい・改葬ガイド</span></a>
 <nav class="site-nav" aria-label="サイト内の案内"><a href="/#pref">都道府県から探す</a><a href="/#flow">墓じまいの流れ</a><a href="/guide/kaisou-law.html">法律の決まり</a><a href="/guide/">読みもの</a><a href="/about.html">このサイトについて</a><a href="/contact.html">お問い合わせ</a></nav></header>
-<main class="wrap">
+<main class="wrap" id="main">
 <p class="crumb"><a href="/">トップ</a> ＞ <a href="index.html">沖縄県</a> ＞ 国頭村</p>
 <section class="hero"><div class="hero-text">
 <h1>国頭村の墓じまい（改葬許可）の問い合わせ先と申請書</h1>
@@ -151,6 +156,7 @@ th:first-child,td:first-child{white-space:nowrap}.optable th{width:38%}.formbox 
 <div class="stats"><div class="stat hl"><div class="k">申請の窓口</div><div class="v">福祉課 衛生係（各種申請書のページで改葬許可申請様式が載っている係）<br>電話 <a href="tel:0980412101">0980-41-2101</a>（役場の代表）</div></div><div class="stat"><div class="k">手数料</div><div class="v">公式ページに記載なし</div></div><div class="stat"><div class="k">申請書をウェブで取れるか</div><div class="v">あり（改葬許可申請様式・記入例、証明書・記入例のPDF）<br><a href="https://www.vill.kunigami.okinawa.jp/yousiki/" rel="nofollow">国頭村 各種申請書を開く</a></div></div><div class="stat"><div class="k">郵送での申請</div><div class="v">公式ページに記載なし</div></div></div>
 <p class="src">オンラインでの申請は、確認日の時点で公式ページに案内がありませんでした。</p>
 <div class="office"><div><div class="k">出典（公式ページ）・確認日 2026-11-18</div></div><div class="srcs"><a class="btn" href="https://www.vill.kunigami.okinawa.jp/yousiki/" rel="nofollow">国頭村 各種申請書</a></div></div>
+<p class="report">国頭村の内容の誤りや、公式ページの変更に気づいたときは、<a href="/contact.html">お問い合わせ</a>からお知らせください。確かめ直して訂正します。</p>
 </section>
 <h2>墓じまいの一般的な流れ</h2><ol class="flow-mini"><li>家族・親族と話し合う</li><li>新しい納骨先を決める</li><li>今の墓地の管理者に証明をもらう</li><li>市町村へ改葬許可を申請する</li><li>遺骨を取り出し、墓所を返す</li><li>新しい納骨先へ納める</li></ol><p class="sec-lead">それぞれの段階でやることは<a href="/#flow">墓じまいの流れ</a>、書類の書き方は<a href="/guide/shinseisho.html">改葬許可申請書の書き方</a>へ。細かい書類は市町村ごとに違います。</p>
 <section class="near"><h2>くわしく知る</h2><div class="near-links"><a href="/guide/kotoba.html">墓じまいの言葉の意味</a><a href="/guide/hiyou.html">墓じまいの費用の内訳</a><a href="/guide/shinseisho.html">改葬許可申請書の書き方</a><a href="/guide/shoumeisho.html">埋葬（収蔵）証明書・受入証明書とは</a><a href="/guide/ridan.html">離檀の進め方</a><a href="/guide/kaisou-law.html">改葬許可の法律の決まり</a></div></section>

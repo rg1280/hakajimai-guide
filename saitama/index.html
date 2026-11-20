@@ -23,6 +23,10 @@
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--fg);font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI",Meiryo,sans-serif;line-height:1.8;font-size:16px}
 a{color:var(--accent);overflow-wrap:anywhere}a:hover{color:var(--accent-dk)}
+.skip{position:absolute;left:-9999px;top:0;background:#fff;color:var(--accent);padding:8px 14px;z-index:10;font-weight:700}.skip:focus{left:12px;top:8px}
+a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.filt{display:flex;align-items:center;gap:8px;min-height:44px;font-weight:700;margin:0 0 8px;cursor:pointer}.filt input{width:20px;height:20px}
+.report{margin-top:16px;font-size:14px;color:var(--sub)}
 h1,h2,h3,.maru{font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN",sans-serif}
 .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
 .prbar{background:#E7E3DA;color:var(--sub2);font-size:13px;text-align:center;padding:6px 16px}
@@ -130,10 +134,11 @@ th:first-child,td:first-child{white-space:nowrap}.optable th{width:38%}.formbox 
 .stats.free .v{font-size:22px}.call .tel{font-size:22px}.chip{white-space:normal}}
 </style></head>
 <body>
+<a class="skip" href="#main">本文へ移動</a>
 <div class="prbar">このサイトは、紹介料を受け取る広告（PR）を掲載することがあります。</div>
 <header class="wrap site-head"><a class="logo maru" href="/"><svg width="38" height="38" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E5470"/><path d="M14 31 V16 Q14 11 20 11 Q26 11 26 16 V31" fill="none" stroke="#F6F4EF" stroke-width="2.6" stroke-linejoin="round"/><path d="M10 31 H30" stroke="#F6F4EF" stroke-width="2.6" stroke-linecap="round"/><rect x="18.5" y="16" width="3" height="8" rx="1" fill="#E2B866"/></svg><span>墓じまい・改葬ガイド</span></a>
 <nav class="site-nav" aria-label="サイト内の案内"><a href="/#pref">都道府県から探す</a><a href="/#flow">墓じまいの流れ</a><a href="/guide/kaisou-law.html">法律の決まり</a><a href="/guide/">読みもの</a><a href="/about.html">このサイトについて</a><a href="/contact.html">お問い合わせ</a></nav></header>
-<main class="wrap">
+<main class="wrap" id="main">
 <p class="crumb"><a href="/">トップ</a> ＞ 埼玉県</p>
 <section class="hero"><div class="hero-text">
 <h1>埼玉県の墓じまい（改葬許可）の手続き 市町村別一覧</h1>
@@ -164,7 +169,8 @@ var s=document.createElement('span');s.textContent=e[1];a.appendChild(s);li.appe
 function load(){if(ld)return;ld=true;fetch('/muni-index.json').then(function(x){return x.json()}).then(function(j){ix=j;show();});}
 q.addEventListener('focus',load);q.addEventListener('input',function(){load();show();});})();</script>
 <dl class="legend"><dt><span class="chip ok">あり</span></dt><dd>改葬の手続きを説明した公式ページがある</dd><dt><span class="chip ok">様式のみ</span></dt><dd>申請書の様式だけが公開されている</dd><dt><span class="chip no">一部のみ</span></dt><dd>業務の一覧などに「改葬」の記載が少しだけある</dd><dt><span class="chip no">見つからず</span></dt><dd>公式サイトで改葬の案内が見つからなかった（制度が無いという意味ではありません）</dd><dt>手数料「記載なし」</dt><dd>公式ページに手数料が書かれていない</dd></dl>
-<div class="tbox"><table><tr><th>市町村</th><th>改葬の案内</th><th>手数料</th><th>申請書の<br>ウェブ取得</th></tr>
+<label class="filt"><input type="checkbox" id="onlyhas"> 改葬の案内か申請書の様式がある市町村だけを表示する</label>
+<div class="tbox"><table id="mtab"><tr><th>市町村</th><th>改葬の案内</th><th>手数料</th><th>申請書の<br>ウェブ取得</th></tr>
 <tr><td><a class="mn" href="saitama-shi.html">さいたま市</a></td><td><span class="chip ok">あり</span></td><td>無料</td><td>—</td></tr>
 <tr><td><a class="mn" href="kawagoe.html">川越市</a></td><td><span class="chip ok">あり</span></td><td>無料</td><td>あり</td></tr>
 <tr><td><a class="mn" href="kumagaya.html">熊谷市</a></td><td><span class="chip ok">あり</span></td><td>無料</td><td>あり</td></tr>
@@ -184,31 +190,31 @@ q.addEventListener('focus',load);q.addEventListener('input',function(){load();sh
 <tr><td><a class="mn" href="ageo.html">上尾市</a></td><td><span class="chip ok">あり</span></td><td>無料</td><td>あり</td></tr>
 <tr><td><a class="mn" href="soka.html">草加市</a></td><td><span class="chip ok">あり</span></td><td>記載なし</td><td>あり</td></tr>
 <tr><td><a class="mn" href="koshigaya.html">越谷市</a></td><td><span class="chip ok">あり</span></td><td>無料</td><td>あり</td></tr>
-<tr id="warabi"><td><b>蕨市</b></td><td colspan="3"><span class="chip no">見つからず</span><br>公式サイトに改葬の案内が見当たりません。死亡届や火葬許可を扱う窓口に電話でお確かめください。<br>市役所の代表電話：<a href="tel:0484323200">048-432-3200</a><br><span class="src">確認日 2026-11-19・<a href="https://www.city.warabi.saitama.jp/kurashi/koseki/koseki/1001117.html" rel="nofollow">番号の出典（公式サイト）</a>・<a href="https://www.city.warabi.saitama.jp/kurashi/koseki/shomei/1001150.html" rel="nofollow">調べた公式ページ</a></span></td></tr>
-<tr id="toda"><td><b>戸田市</b></td><td colspan="3"><span class="chip no">見つからず</span><br>公式サイトに改葬の案内が見当たりません。死亡届や火葬許可を扱う窓口に電話でお確かめください。<br>市役所の代表電話：<a href="tel:0484411800">048-441-1800</a><br><span class="src">確認日 2026-11-19・<a href="https://www.city.toda.saitama.jp/soshiki/191/simin-kazoku-sibou.html" rel="nofollow">番号の出典（公式サイト）</a>・<a href="https://www.city.toda.saitama.jp/life/1/9/" rel="nofollow">調べた公式ページ</a></span></td></tr>
+<tr id="warabi" class="nohas"><td><b>蕨市</b></td><td colspan="3"><span class="chip no">見つからず</span><br>公式サイトに改葬の案内が見当たりません。死亡届や火葬許可を扱う窓口に電話でお確かめください。<br>市役所の代表電話：<a href="tel:0484323200">048-432-3200</a><br><span class="src">確認日 2026-11-19・<a href="https://www.city.warabi.saitama.jp/kurashi/koseki/koseki/1001117.html" rel="nofollow">番号の出典（公式サイト）</a>・<a href="https://www.city.warabi.saitama.jp/kurashi/koseki/shomei/1001150.html" rel="nofollow">調べた公式ページ</a></span></td></tr>
+<tr id="toda" class="nohas"><td><b>戸田市</b></td><td colspan="3"><span class="chip no">見つからず</span><br>公式サイトに改葬の案内が見当たりません。死亡届や火葬許可を扱う窓口に電話でお確かめください。<br>市役所の代表電話：<a href="tel:0484411800">048-441-1800</a><br><span class="src">確認日 2026-11-19・<a href="https://www.city.toda.saitama.jp/soshiki/191/simin-kazoku-sibou.html" rel="nofollow">番号の出典（公式サイト）</a>・<a href="https://www.city.toda.saitama.jp/life/1/9/" rel="nofollow">調べた公式ページ</a></span></td></tr>
 <tr><td><a class="mn" href="iruma.html">入間市</a></td><td><span class="chip ok">あり</span></td><td>記載なし</td><td>あり</td></tr>
 <tr><td><a class="mn" href="asaka.html">朝霞市</a></td><td><span class="chip ok">あり</span></td><td>記載なし</td><td>あり</td></tr>
 <tr><td><a class="mn" href="shiki.html">志木市</a></td><td><span class="chip ok">様式のみ</span></td><td>記載なし</td><td>あり</td></tr>
 <tr><td><a class="mn" href="wako.html">和光市</a></td><td><span class="chip ok">あり</span></td><td>無料</td><td>あり</td></tr>
 <tr><td><a class="mn" href="niiza.html">新座市</a></td><td><span class="chip ok">あり</span></td><td>記載なし</td><td>あり</td></tr>
-<tr id="okegawa"><td><b>桶川市</b></td><td colspan="3"><span class="chip no">一部のみ</span><br>公式サイトに改葬の詳しい案内が見当たりません。死亡届や火葬許可を扱う窓口に電話でお確かめください。<br><span class="src">公式サイトにあること：市の「おくやみハンドブック」（PDF）に改葬の一般的な流れ（改葬先の確保 → 埋葬証明書の発行 → 墓地のある市区町村に申請して改葬許可証を受け取る → 遺骨の取り出し → 改葬先に改葬許可証を提出して納骨）が載っていますが、市の受付窓口・様式を案内するページは見つかりませんでした。</span><br>市役所の代表電話：<a href="tel:0487863211">048-786-3211</a><br><span class="src">確認日 2026-11-18・<a href="https://www.city.okegawa.lg.jp/soshiki/soumubu/shimin/todoke_shoumei/koseki/11400.html" rel="nofollow">番号の出典（公式サイト）</a>・<a href="https://www.city.okegawa.lg.jp/material/files/group/14/20261101.pdf" rel="nofollow">調べた公式ページ</a></span></td></tr>
+<tr id="okegawa" class="nohas"><td><b>桶川市</b></td><td colspan="3"><span class="chip no">一部のみ</span><br>公式サイトに改葬の詳しい案内が見当たりません。死亡届や火葬許可を扱う窓口に電話でお確かめください。<br><span class="src">公式サイトにあること：市の「おくやみハンドブック」（PDF）に改葬の一般的な流れ（改葬先の確保 → 埋葬証明書の発行 → 墓地のある市区町村に申請して改葬許可証を受け取る → 遺骨の取り出し → 改葬先に改葬許可証を提出して納骨）が載っていますが、市の受付窓口・様式を案内するページは見つかりませんでした。</span><br>市役所の代表電話：<a href="tel:0487863211">048-786-3211</a><br><span class="src">確認日 2026-11-18・<a href="https://www.city.okegawa.lg.jp/soshiki/soumubu/shimin/todoke_shoumei/koseki/11400.html" rel="nofollow">番号の出典（公式サイト）</a>・<a href="https://www.city.okegawa.lg.jp/material/files/group/14/20261101.pdf" rel="nofollow">調べた公式ページ</a></span></td></tr>
 <tr><td><a class="mn" href="kuki.html">久喜市</a></td><td><span class="chip ok">あり</span></td><td>記載なし</td><td>あり</td></tr>
 <tr><td><a class="mn" href="kitamoto.html">北本市</a></td><td><span class="chip ok">あり</span></td><td>記載なし</td><td>あり</td></tr>
 <tr><td><a class="mn" href="yashio.html">八潮市</a></td><td><span class="chip ok">あり</span></td><td>記載なし</td><td>あり</td></tr>
 <tr><td><a class="mn" href="fujimi.html">富士見市</a></td><td><span class="chip ok">様式のみ</span></td><td>記載なし</td><td>あり</td></tr>
 <tr><td><a class="mn" href="misato.html">三郷市</a></td><td><span class="chip ok">あり</span></td><td>記載なし</td><td>—</td></tr>
-<tr id="hasuda"><td><b>蓮田市</b></td><td colspan="3"><span class="chip no">一部のみ</span><br>公式サイトに改葬の詳しい案内が見当たりません。死亡届や火葬許可を扱う窓口に電話でお確かめください。<br><span class="src">公式サイトにあること：戸籍に関する証明書のページに「改葬許可証（改葬許可申請書が必要）などがあります。申請方法についてはお問い合わせください。」とあるだけで、改葬の手続きを説明したページは見つかりませんでした。</span><br><span class="src">公式サイトにあること：このページの問い合わせ先は市民課 戸籍担当（048-768-3111 内線116）です。</span><br>市民課 戸籍担当（市役所の電話・内線116）：<a href="tel:0487683111">048-768-3111</a><br><span class="src">確認日 2026-11-18・<a href="https://www.city.hasuda.saitama.jp/shimin/kurashi/koseki/koseki/shomei.html" rel="nofollow">番号の出典（公式サイト）</a></span></td></tr>
+<tr id="hasuda" class="nohas"><td><b>蓮田市</b></td><td colspan="3"><span class="chip no">一部のみ</span><br>公式サイトに改葬の詳しい案内が見当たりません。死亡届や火葬許可を扱う窓口に電話でお確かめください。<br><span class="src">公式サイトにあること：戸籍に関する証明書のページに「改葬許可証（改葬許可申請書が必要）などがあります。申請方法についてはお問い合わせください。」とあるだけで、改葬の手続きを説明したページは見つかりませんでした。</span><br><span class="src">公式サイトにあること：このページの問い合わせ先は市民課 戸籍担当（048-768-3111 内線116）です。</span><br>市民課 戸籍担当（市役所の電話・内線116）：<a href="tel:0487683111">048-768-3111</a><br><span class="src">確認日 2026-11-18・<a href="https://www.city.hasuda.saitama.jp/shimin/kurashi/koseki/koseki/shomei.html" rel="nofollow">番号の出典（公式サイト）</a></span></td></tr>
 <tr><td><a class="mn" href="sakado.html">坂戸市</a></td><td><span class="chip ok">あり</span></td><td>記載なし</td><td>あり</td></tr>
-<tr id="satte"><td><b>幸手市</b></td><td colspan="3"><span class="chip no">見つからず</span><br>公式サイトに改葬の案内が見当たりません。死亡届や火葬許可を扱う窓口に電話でお確かめください。<br>市役所の代表電話：<a href="tel:0480431111">0480-43-1111</a><br><span class="src">確認日 2026-11-19・<a href="https://www.city.satte.lg.jp/soshiki/shimin/index.html" rel="nofollow">番号の出典（公式サイト）</a></span></td></tr>
+<tr id="satte" class="nohas"><td><b>幸手市</b></td><td colspan="3"><span class="chip no">見つからず</span><br>公式サイトに改葬の案内が見当たりません。死亡届や火葬許可を扱う窓口に電話でお確かめください。<br>市役所の代表電話：<a href="tel:0480431111">0480-43-1111</a><br><span class="src">確認日 2026-11-19・<a href="https://www.city.satte.lg.jp/soshiki/shimin/index.html" rel="nofollow">番号の出典（公式サイト）</a></span></td></tr>
 <tr><td><a class="mn" href="tsurugashima.html">鶴ヶ島市</a></td><td><span class="chip ok">様式のみ</span></td><td>記載なし</td><td>あり</td></tr>
 <tr><td><a class="mn" href="hidaka.html">日高市</a></td><td><span class="chip ok">あり</span></td><td>記載なし</td><td>あり</td></tr>
 <tr><td><a class="mn" href="yoshikawa.html">吉川市</a></td><td><span class="chip ok">あり</span></td><td>記載なし</td><td>あり</td></tr>
 <tr><td><a class="mn" href="fujimino.html">ふじみ野市</a></td><td><span class="chip ok">あり</span></td><td>無料</td><td>あり</td></tr>
 <tr><td><a class="mn" href="shiraoka.html">白岡市</a></td><td><span class="chip ok">あり</span></td><td>無料</td><td>あり</td></tr>
-<tr id="ina"><td><b>伊奈町</b></td><td colspan="3"><span class="chip no">見つからず</span><br>公式サイトに改葬の案内が見当たりません。死亡届や火葬許可を扱う窓口に電話でお確かめください。<br>町役場の代表電話：<a href="tel:0487212111">048-721-2111</a><br><span class="src">確認日 2026-11-19・<a href="https://www.town.saitama-ina.lg.jp/0000007258.html" rel="nofollow">番号の出典（公式サイト）</a>・<a href="https://www.town.saitama-ina.lg.jp/category/15-4-0-0-0-0-0-0-0-0.html" rel="nofollow">調べた公式ページ</a></span></td></tr>
+<tr id="ina" class="nohas"><td><b>伊奈町</b></td><td colspan="3"><span class="chip no">見つからず</span><br>公式サイトに改葬の案内が見当たりません。死亡届や火葬許可を扱う窓口に電話でお確かめください。<br>町役場の代表電話：<a href="tel:0487212111">048-721-2111</a><br><span class="src">確認日 2026-11-19・<a href="https://www.town.saitama-ina.lg.jp/0000007258.html" rel="nofollow">番号の出典（公式サイト）</a>・<a href="https://www.town.saitama-ina.lg.jp/category/15-4-0-0-0-0-0-0-0-0.html" rel="nofollow">調べた公式ページ</a></span></td></tr>
 <tr><td><a class="mn" href="miyoshi.html">三芳町</a></td><td><span class="chip ok">あり</span></td><td>無料</td><td>あり</td></tr>
 <tr><td><a class="mn" href="moroyama.html">毛呂山町</a></td><td><span class="chip ok">あり</span></td><td>記載なし</td><td>あり</td></tr>
-<tr id="ogose"><td><b>越生町</b></td><td colspan="3"><span class="chip no">見つからず</span><br>公式サイトに改葬の案内が見当たりません。死亡届や火葬許可を扱う窓口に電話でお確かめください。<br>町役場の代表電話：<a href="tel:0492923121">049-292-3121</a><br><span class="src">確認日 2026-11-19・<a href="https://www.town.ogose.saitama.jp/" rel="nofollow">番号の出典（公式サイト）</a>・<a href="https://www.town.ogose.saitama.jp/service/koseki/index.html" rel="nofollow">調べた公式ページ</a></span></td></tr>
+<tr id="ogose" class="nohas"><td><b>越生町</b></td><td colspan="3"><span class="chip no">見つからず</span><br>公式サイトに改葬の案内が見当たりません。死亡届や火葬許可を扱う窓口に電話でお確かめください。<br>町役場の代表電話：<a href="tel:0492923121">049-292-3121</a><br><span class="src">確認日 2026-11-19・<a href="https://www.town.ogose.saitama.jp/" rel="nofollow">番号の出典（公式サイト）</a>・<a href="https://www.town.ogose.saitama.jp/service/koseki/index.html" rel="nofollow">調べた公式ページ</a></span></td></tr>
 <tr><td><a class="mn" href="namegawa.html">滑川町</a></td><td><span class="chip ok">あり</span></td><td>記載なし</td><td>あり</td></tr>
 <tr><td><a class="mn" href="ranzan.html">嵐山町</a></td><td><span class="chip ok">様式のみ</span></td><td>記載なし</td><td>あり</td></tr>
 <tr><td><a class="mn" href="ogawa.html">小川町</a></td><td><span class="chip ok">あり</span></td><td>記載なし</td><td>あり</td></tr>
@@ -216,11 +222,11 @@ q.addEventListener('focus',load);q.addEventListener('input',function(){load();sh
 <tr><td><a class="mn" href="yoshimi.html">吉見町</a></td><td><span class="chip ok">あり</span></td><td>無料</td><td>あり</td></tr>
 <tr><td><a class="mn" href="hatoyama.html">鳩山町</a></td><td><span class="chip ok">あり</span></td><td>記載なし</td><td>あり</td></tr>
 <tr><td><a class="mn" href="tokigawa.html">ときがわ町</a></td><td><span class="chip ok">あり</span></td><td>記載なし</td><td>あり</td></tr>
-<tr id="yokoze"><td><b>横瀬町</b></td><td colspan="3"><span class="chip no">一部のみ</span><br>公式サイトに改葬の詳しい案内が見当たりません。死亡届や火葬許可を扱う窓口に電話でお確かめください。<br><span class="src">公式サイトにあること：改葬の手続きを説明したページは見つかりませんでした。組織・窓口案内のページに、町民課 戸籍住民グループ（1番窓口）の担当業務として「埋火葬及び改葬の許可に関すること」とあります。</span><br><span class="src">公式サイトにあること：町民課の問い合わせ先は 0494-25-0115 です。</span><br>町民課（組織・窓口案内のページに「埋火葬及び改葬の許可に関すること」の担当とあります）：<a href="tel:0494250115">0494-25-0115</a><br><span class="src">確認日 2026-11-19・<a href="https://www.town.yokoze.saitama.jp/soshiki-madoguchi" rel="nofollow">番号の出典（公式サイト）</a></span></td></tr>
+<tr id="yokoze" class="nohas"><td><b>横瀬町</b></td><td colspan="3"><span class="chip no">一部のみ</span><br>公式サイトに改葬の詳しい案内が見当たりません。死亡届や火葬許可を扱う窓口に電話でお確かめください。<br><span class="src">公式サイトにあること：改葬の手続きを説明したページは見つかりませんでした。組織・窓口案内のページに、町民課 戸籍住民グループ（1番窓口）の担当業務として「埋火葬及び改葬の許可に関すること」とあります。</span><br><span class="src">公式サイトにあること：町民課の問い合わせ先は 0494-25-0115 です。</span><br>町民課（組織・窓口案内のページに「埋火葬及び改葬の許可に関すること」の担当とあります）：<a href="tel:0494250115">0494-25-0115</a><br><span class="src">確認日 2026-11-19・<a href="https://www.town.yokoze.saitama.jp/soshiki-madoguchi" rel="nofollow">番号の出典（公式サイト）</a></span></td></tr>
 <tr><td><a class="mn" href="minano.html">皆野町</a></td><td><span class="chip ok">あり</span></td><td>記載なし</td><td>あり</td></tr>
 <tr><td><a class="mn" href="nagatoro.html">長瀞町</a></td><td><span class="chip ok">あり</span></td><td>記載なし</td><td>あり</td></tr>
-<tr id="ogano"><td><b>小鹿野町</b></td><td colspan="3"><span class="chip no">見つからず</span><br>確認日の時点で公式サイトを開けず、確かめられませんでした。死亡届や火葬許可を扱う窓口に電話でお確かめください。<br>町役場の代表電話：<a href="tel:0494751221">0494-75-1221</a><br><span class="src">確認日 2026-11-18・<a href="https://www.town.ogano.lg.jp/" rel="nofollow">番号の出典（公式サイト）</a></span></td></tr>
-<tr id="higashichichibu"><td><b>東秩父村</b></td><td colspan="3"><span class="chip no">一部のみ</span><br>公式サイトに改葬の詳しい案内が見当たりません。死亡届や火葬許可を扱う窓口に電話でお確かめください。<br><span class="src">公式サイトにあること：改葬の手続きを説明したページは見つかりませんでした。住民福祉課のページに、戸籍担当の主な業務として「埋火葬及び改葬許可」とあります（戸籍担当の電話番号はそのページにありません）。</span><br>村役場の代表電話：<a href="tel:0493821221">0493-82-1221</a><br><span class="src">確認日 2026-11-19・<a href="https://www.vill.higashichichibu.saitama.jp/soshiki/04/" rel="nofollow">番号の出典（公式サイト）</a></span></td></tr>
+<tr id="ogano" class="nohas"><td><b>小鹿野町</b></td><td colspan="3"><span class="chip no">見つからず</span><br>確認日の時点で公式サイトを開けず、確かめられませんでした。死亡届や火葬許可を扱う窓口に電話でお確かめください。<br>町役場の代表電話：<a href="tel:0494751221">0494-75-1221</a><br><span class="src">確認日 2026-11-18・<a href="https://www.town.ogano.lg.jp/" rel="nofollow">番号の出典（公式サイト）</a></span></td></tr>
+<tr id="higashichichibu" class="nohas"><td><b>東秩父村</b></td><td colspan="3"><span class="chip no">一部のみ</span><br>公式サイトに改葬の詳しい案内が見当たりません。死亡届や火葬許可を扱う窓口に電話でお確かめください。<br><span class="src">公式サイトにあること：改葬の手続きを説明したページは見つかりませんでした。住民福祉課のページに、戸籍担当の主な業務として「埋火葬及び改葬許可」とあります（戸籍担当の電話番号はそのページにありません）。</span><br>村役場の代表電話：<a href="tel:0493821221">0493-82-1221</a><br><span class="src">確認日 2026-11-19・<a href="https://www.vill.higashichichibu.saitama.jp/soshiki/04/" rel="nofollow">番号の出典（公式サイト）</a></span></td></tr>
 <tr><td><a class="mn" href="misato-cho.html">美里町</a></td><td><span class="chip ok">あり</span></td><td>「1件200円」</td><td>あり</td></tr>
 <tr><td><a class="mn" href="kamikawa.html">神川町</a></td><td><span class="chip ok">様式のみ</span></td><td>記載なし</td><td>あり</td></tr>
 <tr><td><a class="mn" href="kamisato.html">上里町</a></td><td><span class="chip ok">あり</span></td><td>記載なし</td><td>あり</td></tr>
@@ -229,6 +235,7 @@ q.addEventListener('focus',load);q.addEventListener('input',function(){load();sh
 <tr><td><a class="mn" href="sugito.html">杉戸町</a></td><td><span class="chip ok">様式のみ</span></td><td>記載なし</td><td>あり</td></tr>
 <tr><td><a class="mn" href="matsubushi.html">松伏町</a></td><td><span class="chip ok">あり</span></td><td>無料</td><td>あり</td></tr>
 </table></div>
+<script>(function(){var c=document.getElementById('onlyhas'),t=document.getElementById('mtab');if(!c||!t)return;c.addEventListener('change',function(){t.querySelectorAll('tr.nohas').forEach(function(r){r.hidden=c.checked;});});})();</script>
 <h2>埼玉県の案内</h2><div class='card'><p>県の「墓地・埋葬に関すること」のページでは、墓地、納骨堂又は火葬場の経営許可は市及び町村の事務となっており、経営許可に関するお問合せは市町村へ、と案内しています（県営の公営墓地・納骨堂はありません）。改葬の手続きを説明した県のページは見つかりませんでした。</p><p>埼玉県 保健医療部 生活衛生課 環境衛生・ビル監視担当（<a href="tel:0488303613">048-830-3613</a>）</p><p class="src">公式ページ（確認日 2026-11-19）：<a href="https://www.pref.saitama.lg.jp/a0706/boti-maisou.html" rel="nofollow">https://www.pref.saitama.lg.jp/a0706/boti-maisou.html</a></p></div>
 <p class="src">確認日：2026-11-18〜2026-11-19</p>
 <section class="guides"><h2>墓じまいの手続きをくわしく知る</h2><ul><li><a href="/guide/kotoba.html">墓じまいの言葉の意味：改葬・埋葬・埋蔵・収蔵・墳墓・納骨堂</a></li><li><a href="/guide/hiyou.html">墓じまいの費用の内訳：役所の手数料と証明書、それ以外にかかるもの</a></li><li><a href="/guide/shinseisho.html">改葬許可申請書の書き方：記入欄ごとの説明</a></li><li><a href="/guide/shoumeisho.html">埋葬（収蔵）証明書・受入証明書とは：誰が出すか、もらえないとき</a></li><li><a href="/guide/ridan.html">離檀の進め方：法律で決まっていることと、決まっていないこと</a></li><li><a href="/guide/kaisou-law.html">改葬許可の法律の決まり</a></li></ul></section>

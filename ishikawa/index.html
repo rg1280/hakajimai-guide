@@ -23,6 +23,10 @@
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--fg);font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI",Meiryo,sans-serif;line-height:1.8;font-size:16px}
 a{color:var(--accent);overflow-wrap:anywhere}a:hover{color:var(--accent-dk)}
+.skip{position:absolute;left:-9999px;top:0;background:#fff;color:var(--accent);padding:8px 14px;z-index:10;font-weight:700}.skip:focus{left:12px;top:8px}
+a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.filt{display:flex;align-items:center;gap:8px;min-height:44px;font-weight:700;margin:0 0 8px;cursor:pointer}.filt input{width:20px;height:20px}
+.report{margin-top:16px;font-size:14px;color:var(--sub)}
 h1,h2,h3,.maru{font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN",sans-serif}
 .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
 .prbar{background:#E7E3DA;color:var(--sub2);font-size:13px;text-align:center;padding:6px 16px}
@@ -130,10 +134,11 @@ th:first-child,td:first-child{white-space:nowrap}.optable th{width:38%}.formbox 
 .stats.free .v{font-size:22px}.call .tel{font-size:22px}.chip{white-space:normal}}
 </style></head>
 <body>
+<a class="skip" href="#main">本文へ移動</a>
 <div class="prbar">このサイトは、紹介料を受け取る広告（PR）を掲載することがあります。</div>
 <header class="wrap site-head"><a class="logo maru" href="/"><svg width="38" height="38" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E5470"/><path d="M14 31 V16 Q14 11 20 11 Q26 11 26 16 V31" fill="none" stroke="#F6F4EF" stroke-width="2.6" stroke-linejoin="round"/><path d="M10 31 H30" stroke="#F6F4EF" stroke-width="2.6" stroke-linecap="round"/><rect x="18.5" y="16" width="3" height="8" rx="1" fill="#E2B866"/></svg><span>墓じまい・改葬ガイド</span></a>
 <nav class="site-nav" aria-label="サイト内の案内"><a href="/#pref">都道府県から探す</a><a href="/#flow">墓じまいの流れ</a><a href="/guide/kaisou-law.html">法律の決まり</a><a href="/guide/">読みもの</a><a href="/about.html">このサイトについて</a><a href="/contact.html">お問い合わせ</a></nav></header>
-<main class="wrap">
+<main class="wrap" id="main">
 <p class="crumb"><a href="/">トップ</a> ＞ 石川県</p>
 <section class="hero"><div class="hero-text">
 <h1>石川県の墓じまい（改葬許可）の手続き 市町村別一覧</h1>
@@ -164,19 +169,20 @@ var s=document.createElement('span');s.textContent=e[1];a.appendChild(s);li.appe
 function load(){if(ld)return;ld=true;fetch('/muni-index.json').then(function(x){return x.json()}).then(function(j){ix=j;show();});}
 q.addEventListener('focus',load);q.addEventListener('input',function(){load();show();});})();</script>
 <dl class="legend"><dt><span class="chip ok">あり</span></dt><dd>改葬の手続きを説明した公式ページがある</dd><dt><span class="chip ok">様式のみ</span></dt><dd>申請書の様式だけが公開されている</dd><dt><span class="chip no">一部のみ</span></dt><dd>業務の一覧などに「改葬」の記載が少しだけある</dd><dt><span class="chip no">見つからず</span></dt><dd>公式サイトで改葬の案内が見つからなかった（制度が無いという意味ではありません）</dd><dt>手数料「記載なし」</dt><dd>公式ページに手数料が書かれていない</dd></dl>
-<div class="tbox"><table><tr><th>市町村</th><th>改葬の案内</th><th>手数料</th><th>申請書の<br>ウェブ取得</th></tr>
+<label class="filt"><input type="checkbox" id="onlyhas"> 改葬の案内か申請書の様式がある市町村だけを表示する</label>
+<div class="tbox"><table id="mtab"><tr><th>市町村</th><th>改葬の案内</th><th>手数料</th><th>申請書の<br>ウェブ取得</th></tr>
 <tr><td><a class="mn" href="kanazawa.html">金沢市</a></td><td><span class="chip ok">あり</span></td><td>無料</td><td>—</td></tr>
 <tr><td><a class="mn" href="nanao.html">七尾市</a></td><td><span class="chip ok">あり</span></td><td>記載なし</td><td>あり</td></tr>
 <tr><td><a class="mn" href="komatsu.html">小松市</a></td><td><span class="chip ok">あり</span></td><td>「手数料300円」</td><td>あり</td></tr>
 <tr><td><a class="mn" href="wajima.html">輪島市</a></td><td><span class="chip ok">あり</span></td><td>「一通３００円です。」</td><td>あり</td></tr>
-<tr id="suzu"><td><b>珠洲市</b></td><td colspan="3"><span class="chip no">一部のみ</span><br>公式サイトに改葬の詳しい案内が見当たりません。死亡届や火葬許可を扱う窓口に電話でお確かめください。<br><span class="src">公式サイトにあること：市の組織のページで、市民課 市民サービス係の業務に「埋火葬及び改葬の許可に関すること。」とあります。改葬の手続き（必要書類・手数料など）を説明したページは見つかりませんでした。</span><br>市役所の代表電話（市民課 市民サービス係の業務に「埋火葬及び改葬の許可」があります）：<a href="tel:0768822222">0768-82-2222</a><br><span class="src">確認日 2026-11-19・<a href="https://www.city.suzu.lg.jp/" rel="nofollow">番号の出典（公式サイト）</a>・<a href="https://www.city.suzu.lg.jp/soshiki/2.html" rel="nofollow">調べた公式ページ</a></span></td></tr>
+<tr id="suzu" class="nohas"><td><b>珠洲市</b></td><td colspan="3"><span class="chip no">一部のみ</span><br>公式サイトに改葬の詳しい案内が見当たりません。死亡届や火葬許可を扱う窓口に電話でお確かめください。<br><span class="src">公式サイトにあること：市の組織のページで、市民課 市民サービス係の業務に「埋火葬及び改葬の許可に関すること。」とあります。改葬の手続き（必要書類・手数料など）を説明したページは見つかりませんでした。</span><br>市役所の代表電話（市民課 市民サービス係の業務に「埋火葬及び改葬の許可」があります）：<a href="tel:0768822222">0768-82-2222</a><br><span class="src">確認日 2026-11-19・<a href="https://www.city.suzu.lg.jp/" rel="nofollow">番号の出典（公式サイト）</a>・<a href="https://www.city.suzu.lg.jp/soshiki/2.html" rel="nofollow">調べた公式ページ</a></span></td></tr>
 <tr><td><a class="mn" href="kaga.html">加賀市</a></td><td><span class="chip ok">様式のみ</span></td><td>記載なし</td><td>あり</td></tr>
 <tr><td><a class="mn" href="hakui.html">羽咋市</a></td><td><span class="chip ok">あり</span></td><td>記載なし</td><td>あり</td></tr>
 <tr><td><a class="mn" href="kahoku.html">かほく市</a></td><td><span class="chip ok">あり</span></td><td>記載なし</td><td>あり</td></tr>
 <tr><td><a class="mn" href="hakusan.html">白山市</a></td><td><span class="chip ok">様式のみ</span></td><td>記載なし</td><td>あり</td></tr>
 <tr><td><a class="mn" href="nomi.html">能美市</a></td><td><span class="chip ok">あり</span></td><td>記載なし</td><td>あり</td></tr>
 <tr><td><a class="mn" href="nonoichi.html">野々市市</a></td><td><span class="chip ok">あり</span></td><td>記載なし</td><td>あり</td></tr>
-<tr id="kawakita"><td><b>川北町</b></td><td colspan="3"><span class="chip no">見つからず</span><br>公式サイトに改葬の案内が見当たりません。死亡届や火葬許可を扱う窓口に電話でお確かめください。<br><span class="src">公式サイトにあること：町の死亡届のページでは、死亡届を出すと火葬許可証が交付されると案内されています（窓口は住民課。改葬の担当かどうかは明記されていません）。</span><br>町役場の代表電話：<a href="tel:0762771111">076-277-1111</a><br><span class="src">確認日 2026-11-19・<a href="https://www.town.kawakita.ishikawa.jp/" rel="nofollow">番号の出典（公式サイト）</a>・<a href="https://www.town.kawakita.ishikawa.jp/gyosei1/jumin/" rel="nofollow">調べた公式ページ</a></span></td></tr>
+<tr id="kawakita" class="nohas"><td><b>川北町</b></td><td colspan="3"><span class="chip no">見つからず</span><br>公式サイトに改葬の案内が見当たりません。死亡届や火葬許可を扱う窓口に電話でお確かめください。<br><span class="src">公式サイトにあること：町の死亡届のページでは、死亡届を出すと火葬許可証が交付されると案内されています（窓口は住民課。改葬の担当かどうかは明記されていません）。</span><br>町役場の代表電話：<a href="tel:0762771111">076-277-1111</a><br><span class="src">確認日 2026-11-19・<a href="https://www.town.kawakita.ishikawa.jp/" rel="nofollow">番号の出典（公式サイト）</a>・<a href="https://www.town.kawakita.ishikawa.jp/gyosei1/jumin/" rel="nofollow">調べた公式ページ</a></span></td></tr>
 <tr><td><a class="mn" href="tsubata.html">津幡町</a></td><td><span class="chip no">見つからず</span></td><td>記載なし</td><td>—</td></tr>
 <tr><td><a class="mn" href="uchinada.html">内灘町</a></td><td><span class="chip ok">様式のみ</span></td><td>記載なし</td><td>あり</td></tr>
 <tr><td><a class="mn" href="shika.html">志賀町</a></td><td><span class="chip ok">あり</span></td><td>「改葬許可証1枚あたり300円」</td><td>あり</td></tr>
@@ -185,6 +191,7 @@ q.addEventListener('focus',load);q.addEventListener('input',function(){load();sh
 <tr><td><a class="mn" href="anamizu.html">穴水町</a></td><td><span class="chip ok">あり</span></td><td>記載なし</td><td>あり</td></tr>
 <tr><td><a class="mn" href="noto.html">能登町</a></td><td><span class="chip ok">あり</span></td><td>記載なし</td><td>あり</td></tr>
 </table></div>
+<script>(function(){var c=document.getElementById('onlyhas'),t=document.getElementById('mtab');if(!c||!t)return;c.addEventListener('change',function(){t.querySelectorAll('tr.nohas').forEach(function(r){r.hidden=c.checked;});});})();</script>
 <h2>石川県の案内</h2><div class='card'><p>薬事衛生課のページの業務内容（生活衛生・動物愛護グループ）に「墓地、埋葬及び火葬に関すること」とあります。改葬の手続きを説明した県のページは見つかりませんでした。</p><p>石川県 健康福祉部 薬事衛生課 生活衛生・動物愛護グループ（<a href="tel:0762251441">076-225-1441</a>）</p><p class="src">公式ページ（確認日 2026-11-18）：<a href="https://www.pref.ishikawa.lg.jp/yakuji/index.html" rel="nofollow">https://www.pref.ishikawa.lg.jp/yakuji/index.html</a></p></div>
 <p class="src">確認日：2026-11-18〜2026-11-19</p>
 <section class="guides"><h2>墓じまいの手続きをくわしく知る</h2><ul><li><a href="/guide/kotoba.html">墓じまいの言葉の意味：改葬・埋葬・埋蔵・収蔵・墳墓・納骨堂</a></li><li><a href="/guide/hiyou.html">墓じまいの費用の内訳：役所の手数料と証明書、それ以外にかかるもの</a></li><li><a href="/guide/shinseisho.html">改葬許可申請書の書き方：記入欄ごとの説明</a></li><li><a href="/guide/shoumeisho.html">埋葬（収蔵）証明書・受入証明書とは：誰が出すか、もらえないとき</a></li><li><a href="/guide/ridan.html">離檀の進め方：法律で決まっていることと、決まっていないこと</a></li><li><a href="/guide/kaisou-law.html">改葬許可の法律の決まり</a></li></ul></section>

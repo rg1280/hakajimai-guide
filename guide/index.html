@@ -23,6 +23,10 @@
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--fg);font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI",Meiryo,sans-serif;line-height:1.8;font-size:16px}
 a{color:var(--accent);overflow-wrap:anywhere}a:hover{color:var(--accent-dk)}
+.skip{position:absolute;left:-9999px;top:0;background:#fff;color:var(--accent);padding:8px 14px;z-index:10;font-weight:700}.skip:focus{left:12px;top:8px}
+a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.filt{display:flex;align-items:center;gap:8px;min-height:44px;font-weight:700;margin:0 0 8px;cursor:pointer}.filt input{width:20px;height:20px}
+.report{margin-top:16px;font-size:14px;color:var(--sub)}
 h1,h2,h3,.maru{font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN",sans-serif}
 .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
 .prbar{background:#E7E3DA;color:var(--sub2);font-size:13px;text-align:center;padding:6px 16px}
@@ -130,10 +134,11 @@ th:first-child,td:first-child{white-space:nowrap}.optable th{width:38%}.formbox 
 .stats.free .v{font-size:22px}.call .tel{font-size:22px}.chip{white-space:normal}}
 </style></head>
 <body>
+<a class="skip" href="#main">本文へ移動</a>
 <div class="prbar">このサイトは、紹介料を受け取る広告（PR）を掲載することがあります。</div>
 <header class="wrap site-head"><a class="logo maru" href="/"><svg width="38" height="38" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E5470"/><path d="M14 31 V16 Q14 11 20 11 Q26 11 26 16 V31" fill="none" stroke="#F6F4EF" stroke-width="2.6" stroke-linejoin="round"/><path d="M10 31 H30" stroke="#F6F4EF" stroke-width="2.6" stroke-linecap="round"/><rect x="18.5" y="16" width="3" height="8" rx="1" fill="#E2B866"/></svg><span>墓じまい・改葬ガイド</span></a>
 <nav class="site-nav" aria-label="サイト内の案内"><a href="/#pref">都道府県から探す</a><a href="/#flow">墓じまいの流れ</a><a href="/guide/kaisou-law.html">法律の決まり</a><a href="/guide/">読みもの</a><a href="/about.html">このサイトについて</a><a href="/contact.html">お問い合わせ</a></nav></header>
-<main class="wrap">
+<main class="wrap" id="main">
 <p class="crumb"><a href="/">トップ</a> ＞ 読みもの</p>
 <div class="prose"><h1>読みもの：墓じまいの手続きをくわしく知る</h1><p>墓じまい・改葬の手続きで迷いやすいことを、法令や公的機関の資料で確かめてまとめています。市区町村ごとの窓口は<a href="/#pref">都道府県から探す</a>へ。</p><ul class="glist"><li><a href="/guide/kotoba.html">墓じまいの言葉の意味：改葬・埋葬・埋蔵・収蔵・墳墓・納骨堂</a><p>墓じまいの手続きで出てくる「改葬」「埋葬」「埋蔵」「収蔵」「墳墓」「納骨堂」などの言葉を、墓地、埋葬等に関する法律の定義をもとに説明します。</p></li><li><a href="/guide/hiyou.html">墓じまいの費用の内訳：役所の手数料と証明書、それ以外にかかるもの</a><p>墓じまい・改葬でかかる費用を、改葬許可の手数料、戸籍などの証明書、墓石の撤去や新しい納骨先などに分けて、公式資料で確かめられる範囲でまとめました。</p></li><li><a href="/guide/shinseisho.html">改葬許可申請書の書き方：記入欄ごとの説明</a><p>改葬許可申請書に書く7つの事項を、施行規則の条文と市区町村の記入例をもとに、記入欄ごとに説明します。様式は市区町村ごとに違います。</p></li><li><a href="/guide/shoumeisho.html">埋葬（収蔵）証明書・受入証明書とは：誰が出すか、もらえないとき</a><p>改葬許可の申請で求められる埋葬（収蔵）証明書と受入証明書について、誰が出すのか、法令での位置づけ、証明をもらえないときの市区町村の案内をまとめました。</p></li><li><a href="/guide/ridan.html">離檀の進め方：法律で決まっていることと、決まっていないこと</a><p>お寺の墓地から墓じまいをする（離檀する）ときに、法律や国の指針で決まっていることと決まっていないことを、条文と公的機関の資料でまとめました。</p></li><li><a href="/guide/kaisou-law.html">改葬許可の法律の決まり</a><p>申請先、申請書に書くこと、付ける書類を、法律と施行規則の条文をもとにまとめました。</p></li></ul></div>
 </main>

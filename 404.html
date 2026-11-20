@@ -15,7 +15,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta name="theme-color" content="#3E5470">
+<meta name="theme-color" content="#3E5470"><meta name="robots" content="noindex">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://hakajimai.taccweb.com/"}, {"@type": "ListItem", "position": 2, "name": "ページが見つかりません", "item": "https://hakajimai.taccweb.com/404.html"}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@700&display=swap" rel="stylesheet">
 <style>
@@ -23,6 +23,10 @@
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--fg);font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI",Meiryo,sans-serif;line-height:1.8;font-size:16px}
 a{color:var(--accent);overflow-wrap:anywhere}a:hover{color:var(--accent-dk)}
+.skip{position:absolute;left:-9999px;top:0;background:#fff;color:var(--accent);padding:8px 14px;z-index:10;font-weight:700}.skip:focus{left:12px;top:8px}
+a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.filt{display:flex;align-items:center;gap:8px;min-height:44px;font-weight:700;margin:0 0 8px;cursor:pointer}.filt input{width:20px;height:20px}
+.report{margin-top:16px;font-size:14px;color:var(--sub)}
 h1,h2,h3,.maru{font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN",sans-serif}
 .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
 .prbar{background:#E7E3DA;color:var(--sub2);font-size:13px;text-align:center;padding:6px 16px}
@@ -130,12 +134,23 @@ th:first-child,td:first-child{white-space:nowrap}.optable th{width:38%}.formbox 
 .stats.free .v{font-size:22px}.call .tel{font-size:22px}.chip{white-space:normal}}
 </style></head>
 <body>
+<a class="skip" href="#main">本文へ移動</a>
 <div class="prbar">このサイトは、紹介料を受け取る広告（PR）を掲載することがあります。</div>
 <header class="wrap site-head"><a class="logo maru" href="/"><svg width="38" height="38" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3E5470"/><path d="M14 31 V16 Q14 11 20 11 Q26 11 26 16 V31" fill="none" stroke="#F6F4EF" stroke-width="2.6" stroke-linejoin="round"/><path d="M10 31 H30" stroke="#F6F4EF" stroke-width="2.6" stroke-linecap="round"/><rect x="18.5" y="16" width="3" height="8" rx="1" fill="#E2B866"/></svg><span>墓じまい・改葬ガイド</span></a>
 <nav class="site-nav" aria-label="サイト内の案内"><a href="/#pref">都道府県から探す</a><a href="/#flow">墓じまいの流れ</a><a href="/guide/kaisou-law.html">法律の決まり</a><a href="/guide/">読みもの</a><a href="/about.html">このサイトについて</a><a href="/contact.html">お問い合わせ</a></nav></header>
-<main class="wrap">
+<main class="wrap" id="main">
 <p class="crumb"><a href="/">トップ</a> ＞ ページが見つかりません</p>
-<div class="prose"><h1>ページが見つかりません</h1><p>お探しのページは、住所が変わったか、無くなった可能性があります。</p><p><a class="btn" href="/#pref">都道府県から市区町村を探す</a></p><p><a href="/guide/">読みものの一覧</a>・<a href="/">トップへ戻る</a></p></div>
+<div class="prose"><h1>ページが見つかりませんでした</h1><p>お探しのページは、住所が変わったか、無くなった可能性があります。</p></div><div class="msearch" role="search" data-pref=""><label for="msq">市区町村名で探す</label>
+<input id="msq" type="search" autocomplete="off" placeholder="例：甲府市、八王子" aria-describedby="msq-hint">
+<p id="msq-hint" class="src">お墓（遺骨）がある市区町村の名前を、漢字で入れてください。</p><ul id="msr" aria-live="polite"></ul></div>
+<script>(function(){var q=document.getElementById('msq'),r=document.getElementById('msr'),ix=null,ld=false,pf=q.closest('.msearch').getAttribute('data-pref');
+function show(){var v=q.value.trim().replace(/\s/g,'');r.innerHTML='';if(!v||!ix)return;var hit=[];
+for(var i=0;i<ix.length&&hit.length<12;i++){var e=ix[i];if((!pf||e[1]===pf)&&(e[1]+e[0]).indexOf(v)>=0)hit.push(e);}
+if(!hit.length){r.innerHTML='<li class="none">見つかりませんでした。都道府県の一覧からお探しください。</li>';return;}
+hit.forEach(function(e){var li=document.createElement('li'),a=document.createElement('a');a.href=e[2];a.textContent=e[0];
+var s=document.createElement('span');s.textContent=e[1];a.appendChild(s);li.appendChild(a);r.appendChild(li);});}
+function load(){if(ld)return;ld=true;fetch('/muni-index.json').then(function(x){return x.json()}).then(function(j){ix=j;show();});}
+q.addEventListener('focus',load);q.addEventListener('input',function(){load();show();});})();</script><p><a class="btn" href="/#pref">都道府県から市区町村を探す</a></p><p><a href="/guide/">読みものの一覧</a>・<a href="/">トップへ戻る</a></p>
 </main>
 <footer class="site-foot"><div class="wrap">
 <p>掲載している内容は、市区町村の公式ページや国の法令などの公的な資料を、確認日の時点で調べたものです。手続きや必要な書類は変わることがあります。申請する前に、必ず担当の窓口へ確かめてください。誤りに気づいたときは<a href="/contact.html">お問い合わせ</a>からお知らせください。</p>
