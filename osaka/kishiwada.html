@@ -25,7 +25,8 @@ h1,h2,h3,.maru{font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN",sans-se
 .site-nav{display:flex;flex-wrap:wrap;gap:4px 20px;font-size:15px}
 .site-nav a{text-decoration:none;padding:8px 0}
 .crumb{font-size:13px;color:var(--sub);margin:0 0 4px}.crumb a{color:var(--sub)}
-main{padding-bottom:56px}
+main.wrap{padding-bottom:72px}  /* フッターの上の間隔。.wrap の padding:0 20px に負けないよう main.wrap で書く（11/20 本人指摘） */
+@media (max-width:760px){main.wrap{padding-bottom:48px}}
 .hero{display:flex;flex-wrap:wrap;align-items:center;gap:32px;padding:16px 0 40px}
 .hero-text{flex:1 1 440px;min-width:0}.hero-art{flex:1 1 360px;min-width:0}.hero-art.small{flex:0 1 280px}
 .hero-art svg{width:100%;height:auto;display:block}
